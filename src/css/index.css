@@ -5,6 +5,8 @@
 }
 
 main {
+  display: flex;
+  flex-direction: row;
   background-color: #fcf8f5;
   margin: 0px;
   padding: 0px;
@@ -12,12 +14,11 @@ main {
 
 .header-products {
   padding: 10px;
-  margin-left: 30px;
 }
 
 .container-principal {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-left: 20px;
   padding: 10px;
   gap: 20px;
@@ -110,6 +111,7 @@ main {
   padding: 10px;
   border-radius: 5%;
   position: relative;
+  margin-top: 2%;
 }
 
 .cart-content {
