@@ -11,6 +11,11 @@ class Produto {
         this._productTile = title
     }
 
+    add() {
+
+        const getPrice = document.getElementById("product-price")
+        console.log(getPrice);
+    }
     
 
 }
