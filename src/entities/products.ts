@@ -15,6 +15,10 @@ export class Product {
       (this._imageUrl = imageUrl);
   }
 
+  get price() {
+    return this._price;
+  }
+
   renderProducts() {
     // cria o container principal
     const productCard = document.createElement("div");
@@ -31,7 +35,7 @@ export class Product {
     // botão add cart
     const addCartBtn = document.createElement("div");
     addCartBtn.className = "add-cart-btn";
-    addCartBtn.innerHTML = `<div id="addToCart" class="add-cart-icon">
+    addCartBtn.innerHTML = `<div class="add-cart-icon">
                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
               </div>
               <span>Add to Cart</span>`;

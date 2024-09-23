@@ -2,6 +2,7 @@
 import data from "../data.json"; // não usou chaves pq é dado bruto e não exporta nada
 // importar a entidade product.ts
 import { Product } from "./entities/products";
+import { Cart } from "./entities/cart";
 
 // criar os objetos usando os dados
 for (let i = 0; i < data.length; i++) {
@@ -13,3 +14,11 @@ for (let i = 0; i < data.length; i++) {
 
   product.renderProducts();
 }
+
+const product1 = new Product("banana", "fruta", 4, "kladjfdkj")
+const product2 = new Product("maça", "fruta", 4, "kladjfdkj")
+
+const cart = new Cart()
+console.log(cart.addToCart(product1))
+console.log(cart.addToCart(product2))
+console.log(cart)
