@@ -1,5 +1,5 @@
 import { v4 as uuid4 } from "uuid";
-//import { ShoppingCart } from "./shoppingCart";
+import { Cart } from "./cart";
 
 export class Product {
   private _id: string = uuid4();
@@ -19,7 +19,11 @@ export class Product {
     return this._price;
   }
 
-  renderProducts() {
+  get name() {
+    return this._name;
+  }
+
+  renderProducts(cart: Cart) {
     // cria o container principal
     const productCard = document.createElement("div");
     productCard.className = "product-card";
@@ -39,6 +43,51 @@ export class Product {
                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
               </div>
               <span>Add to Cart</span>`;
+
+    let itemCount = 0;
+
+    addCartBtn.addEventListener("click", () => {
+      addCartBtn.classList.add("colorBtnIcons");
+      if (itemCount === 0) {
+        itemCount++;
+
+        addCartBtn.innerHTML = `
+            <div class="decrement-btn"><i class="fa fa-minus-circle" aria-hidden="true"></i></div>
+            <span class="item-count">${itemCount}</span>
+            <div class="increment-btn"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                    `;
+
+        const decrementBtn = addCartBtn.querySelector(".decrement-btn");
+        const incrementBtn = addCartBtn.querySelector(".increment-btn");
+
+        if (incrementBtn) {
+          incrementBtn.addEventListener("click", (event) => {
+            itemCount++;
+            const itemCountElement = addCartBtn.querySelector(".item-count");
+            if (itemCountElement) {
+              itemCountElement.innerHTML = `${itemCount}`;
+            }
+            // addCartBtn.querySelector(".item-count").innerText = itemCount;
+          });
+        }
+
+        if (decrementBtn) {
+          decrementBtn.addEventListener("click", (event) => {
+            if (itemCount >= 0) {
+              itemCount--;
+              const itemCountElement = addCartBtn.querySelector(".item-count");
+              if (itemCountElement) {
+                itemCountElement.innerHTML = `${itemCount}`;
+              }
+              // addCartBtn.querySelector(".item-count").innerText = itemCount;
+            }
+          });
+        }
+
+        // Adiciona o produto ao carrinho
+        cart.addToCart(this); // Adiciona a instância do produto ao carrinho
+      }
+    });
 
     // informações
     const productInfo = document.createElement("div");

@@ -4,6 +4,8 @@ import data from "../data.json"; // não usou chaves pq é dado bruto e não exp
 import { Product } from "./entities/products";
 import { Cart } from "./entities/cart";
 
+const cart = new Cart();
+
 // criar os objetos usando os dados
 for (let i = 0; i < data.length; i++) {
   const nome = data[i].name;
@@ -12,13 +14,13 @@ for (let i = 0; i < data.length; i++) {
   const imageUrl = data[i].image.desktop;
   const product = new Product(nome, category, price, imageUrl);
 
-  product.renderProducts();
+  product.renderProducts(cart);
 }
 
-const product1 = new Product("banana", "fruta", 4, "kladjfdkj")
-const product2 = new Product("maça", "fruta", 4, "kladjfdkj")
+// const product1 = new Product("banana", "fruta", 4, "kladjfdkj");
+// const product2 = new Product("maça", "fruta", 4, "kladjfdkj");
 
-const cart = new Cart()
-console.log(cart.addToCart(product1))
-console.log(cart.addToCart(product2))
-console.log(cart)
+// const cart = new Cart();
+// console.log(cart.addToCart(product1));
+// console.log(cart.addToCart(product2));
+// console.log(cart);
