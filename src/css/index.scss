@@ -200,3 +200,20 @@ main {
 .item-count {
   color: $white;
 }
+
+.order-btn {
+  height: 30px;
+  width: 200px;
+  background-color: $main-color;
+  color: $white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+// #cart-content {
+//   display: flex;
+//   flex-direction: column;
+// }

@@ -42,7 +42,13 @@ export class Cart {
       totalPrice.className = "total-price";
       totalPrice.innerHTML = `<span>order total</span>
       <span id="price-total">$ ${this._total}</span> `;
+
+      const completeOrderBtn = document.createElement("div");
+      completeOrderBtn.className = "order-btn";
+      completeOrderBtn.innerHTML = "<span>Confirm Order</span>";
+
       cartItemsContainer.appendChild(totalPrice);
+      cartItemsContainer.appendChild(completeOrderBtn);
     }
   }
 }
