@@ -33,16 +33,15 @@ main {
 .container-principal {
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 80px;
   padding: 10px;
   gap: 20px;
-  //   height: 100%;
 }
 
 .cards {
   display: flex;
   flex-flow: row wrap;
-  width: 700px;
+  width: 800px;
   height: 100%;
 }
 
@@ -61,12 +60,20 @@ main {
   width: 100%;
   height: 200px;
   position: relative;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5%;
-  }
+  border-radius: 8px;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid $rose-100;
+  transition: border-color 0.3s ease;
+}
+
+.product-image img:hover {
+  border-color: $main-color;
 }
 
 .product-information {
@@ -91,6 +98,17 @@ main {
   font-size: 12px;
 }
 
+.cart-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $rose-100;
+}
+
+.infoName {
+  display: flex;
+  justify-content: space-between;
+}
+
 .add-cart-btn {
   background-color: $white;
   border-radius: 20px;
@@ -104,17 +122,29 @@ main {
   align-items: center;
   position: absolute;
   transform: translate(-50%, -50%);
-  /* transform: translateX(-50%); */
   left: 50%;
   bottom: 25%;
-  /* bottom: 95px; */
   cursor: pointer;
-  i {
-    color: $main-color;
-  }
-  span {
-    font-size: 12px;
-  }
+}
+
+.add-cart-btn .fa-cart-plus {
+  color: $main-color;
+}
+
+.add-cart-btn span {
+  font-size: 12px;
+}
+
+.colorBtnIcons {
+  background-color: $main-color;
+  display: flex;
+  justify-content: space-between;
+}
+
+.decrement-btn,
+.increment-btn,
+.item-count {
+  color: $white;
 }
 
 .cart {
@@ -124,34 +154,71 @@ main {
   padding: 10px;
   border-radius: 5%;
   margin-top: 3%;
+  margin-left: 15px;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
+  // justify-content: flex-start;
   // align-items: center;
+  position: relative;
 }
 
 .header-cart {
-  padding: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
   font-weight: bold;
   color: $main-color;
-  align-self: flex-start;
+  align-self: start;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
-.cart-item {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  gap: 5px;
+.infoCart {
+  margin-left: 0px;
 }
 
-#names-styles {
+// .cart-content{
+//   justify-content: center !important;
+// }
+
+.names-styles {
   font-weight: bold;
+}
+
+.quantity-styles {
+  color: $main-color;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.price-styles {
+  color: $rose-500;
   font-size: 14px;
 }
 
-#p-price {
-  color: gray;
-  font-size: 12px;
+.price-styles-total {
+  color: $rose-500;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#price-total {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.order-btn {
+  height: 30px;
+  width: 200px;
+  font-size: 13px;
+  background-color: $main-color;
+  color: $white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
 }
 
 .total-price {
@@ -162,9 +229,16 @@ main {
   padding: 10px;
 }
 
-#price-total {
-  font-size: 16px;
-  color: gray;
+.developer {
+  color: rgb(151, 151, 151);
+  font-size: 12px;
+  padding-top: 50px;
+  align-self: flex-start;
+}
+
+.developer a {
+  text-decoration: none;
+  color: rgb(151, 151, 151);
   font-weight: bold;
 }
 
@@ -183,37 +257,41 @@ main {
   }
 }
 
-.colorBtnIcons {
-  background-color: $main-color;
-  display: flex;
-  justify-content: space-between;
-}
-
-.decrement-btn i {
-  color: $white;
-}
-
-.increment-btn i {
-  color: $white;
-}
-
-.item-count {
-  color: $white;
-}
-
-.order-btn {
-  height: 30px;
-  width: 200px;
-  background-color: $main-color;
-  color: $white;
-  border-radius: 10px;
+.modal {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-// #cart-content {
-//   display: flex;
-//   flex-direction: column;
-// }
+/* Estilo do conteúdo do modal */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  text-align: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo do botão de fechar (x) */
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: #000;
+}
