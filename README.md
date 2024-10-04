@@ -9,12 +9,9 @@ Você pode ver o projeto em funcionamento através do link: [Product list with c
 _Tela principal_
 ![](./src/imagens-projeto/main.png)
 
-| Item adicionado ao carrinho               | Carrinho atualizado com o item                |
+| Item adicionado ao carrinho               | Modal de confirmação do pedido                |
 | ----------------------------------------- | --------------------------------------------- |
 | ![](./src/imagens-projeto/cart-added.png) | ![](/src/imagens-projeto/order-confirmed.png) |
-
-_Modal de confirmação do pedido_
-![](imagens-projeto/image3.png)
 
 ## Estrutura do Projeto
 
