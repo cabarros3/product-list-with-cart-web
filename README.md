@@ -1,103 +1,65 @@
-# Product list with cart solution
+# Product list with cart
 
-![](./assets/images/imagem.png)
+Product list with cart é a interface de um aplicativo web que permite aos usuários visualizar e interagir com uma lista de produtos, nesse caso sobremesas, e gerenciar um carrinho de compras. O projeto foi desenvolvido utilizando HTML, CSS, TypeScript e Vite.
 
-This is a solution to the [Product list with cart challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+## Visualize o Projeto
 
-## Table of contents
+Você pode ver o projeto em funcionamento através do link: [Product list with cart](https://cart-product-site.netlify.app/).
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+_Tela principal_
+![](imagens-projeto/image.png)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
+| Item adicionado ao carrinho     | Carrinho atualizado com o item  |
+| ------------------------------- | ------------------------------- |
+| ![](imagens-projeto/image1.png) | ![](imagens-projeto/image2.png) |
 
-## Overview
+_Modal de confirmação do pedido_
+![](imagens-projeto/image3.png)
 
-### The challenge
+## Estrutura do Projeto
 
-Users should be able to:
+O projeto é composto pelos seguintes arquivos principais:
 
-- Add items to the cart and remove them
-- Increase/decrease the number of items in the cart
-- See an order confirmation modal when they click "Confirm Order"
-- Reset their selections when they click "Start New Order"
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
+- index.html: A página principal que exibe a lista de produtos e o carrinho de compras.
+- src/entites/product.ts: Define a classe Product, que contém a lógica para gerenciar os produtos, incluindo suas propriedades e métodos para renderização.
+- src/app.ts: Script principal que inicializa a aplicação e gerencia a interação do usuário com a lista de produtos e o carrinho.
+- src/css/index.scss: Define o design de toda a página.
 
-### Links
+## Funcionalidades
 
-- URL do deploy: [Add solution URL here](https://your-solution-url.com)
+- Listagem de Produtos: Exibe uma lista de produtos com imagens, categorias, nomes e preços.
+- Adição ao Carrinho: Os usuários podem adicionar ou remover produtos ao carrinho e ajustar a quantidade de itens.
+- Visualização do Carrinho: Mostra os itens adicionados ao carrinho, suas quantidades e o total da compra.
 
-## My process
+## Para rodar o projeto no seu computador:
 
-### Built with
+- Para clonar o repositório:
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
-### What I learned
-
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
+```bash
+  git clone https://github.com/IzabelleAlves/Product-list-with-cart.git/
 ```
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
+- Instale as dependências:
+
+```bash
+  npm install
 ```
 
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+- Compile e Inicie o Projeto:
+
+```bash
+  npm run dev
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+## Tecnologias Utilizadas
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+- **HTML**: Estruturação da página.
+- **CSS (SCSS)**: Estilização do layout e design responsivo.
+- **TypeScript**: Lógica da aplicação e definição de tipos.
+- **Vite**: Ferramenta de build e desenvolvimento.
+- **UUID**: Para geração de IDs únicos para produtos.
 
-### Continued development
+**_Entre em contato comigo_**
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- LinkedIn - [Camilla Barros](https://www.linkedin.com/in/camillabarros/)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- **E-mail**: [izabelle.alvesbl@gmail.com](mailto:izabelle.alvesbl@gmail.com)
+- **LinkedIn**: [Izabelle Alves](https://www.linkedin.com/in/izabellealvess/)
