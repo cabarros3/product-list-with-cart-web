@@ -53,8 +53,17 @@ export class Cart {
     return this._products;
   }
 
+  getTotalQuantity() {
+    return this.products.reduce(
+      (total, product) => total + product.quantity,
+      0
+    );
+  }
+
   updateCart() {
     const cartContainer = document.getElementById("cart-content");
+    // para modificar o header do cart com a quantidade de produtos no carrinho
+    const cartHeader = document.getElementById("header-cart");
 
     if (cartContainer) {
       cartContainer.innerHTML = "";
@@ -73,13 +82,33 @@ export class Cart {
                         <span class="price-styles-total">$ ${(product.price * product.quantity).toFixed(2)}</span>
                     </div>
                 `;
+        // Adiciona o listener de evento para o ícone de exclusão
+        const removeBtn = itemElement.querySelector(".removeCart-btn");
+        if (removeBtn) {
+          removeBtn.addEventListener("click", () => {
+            this.removeFromCart(product); // Chama o método para remover o produto
+          });
+        }
+
         cartContainer.append(itemElement);
       });
+
+      // modificando o header e adicionando a quantidade de produtos
+      const totalProductsQuantitty = document.getElementById("change-quantity");
+      if (totalProductsQuantitty) {
+        totalProductsQuantitty.innerHTML = `(${this.getTotalQuantity()})`;
+        cartHeader?.appendChild(totalProductsQuantitty);
+      }
 
       const totalPrice = document.createElement("div");
       totalPrice.className = "total-price";
       totalPrice.innerHTML = `<span>Order Total</span>
             <span id="price-total">$ ${this._total.toFixed(2)}</span>`;
+
+      const carbonNeutralImage = document.createElement("div");
+      carbonNeutralImage.className = "carbon";
+      carbonNeutralImage.innerHTML = `<img src="./assets/images/icon-carbon-neutral.svg" alt="" srcset="" />
+      <span>This is a carbon neutral delivery</span>`;
 
       const completeOrderBtn = document.createElement("div");
       completeOrderBtn.className = "order-btn";
@@ -88,13 +117,61 @@ export class Cart {
       completeOrderBtn.addEventListener("click", () => {
         const modal = document.createElement("div");
         modal.className = "modal";
-        if (this.total != 0) {
-          modal.innerHTML = `
-                    <div class="modal-content">
-                        <span class="close-btn">&times;</span>
-                        <h2>Your order has been successfully completed!</h2>
-                    </div>`;
 
+        if (this.total != 0) {
+          // Cria o conteúdo do modal
+          let productsList = "<ul>";
+          this.products.forEach((product) => {
+            productsList += `
+                    <li>
+                    <div class="container-order-list">
+                      <div class="order-list-img">
+                        <img src="${product.imageUrl}" />
+                      </div>
+                      <div>
+                        <div>
+                          <span class="product-name-order">${product.name}</span>
+                        </div>
+                        <div class="organize-products-order">
+                          <div class="quantity-price-order">
+                            <span class="quantity-styles">X${product.quantity}</span>
+                            <span class="price-styles">@$${product.price.toFixed(2)}</span>
+                          <div>
+                          <div>
+                            <span class="price-styles-total">$ ${(product.price * product.quantity).toFixed(2)}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                      
+                    </li>
+                `;
+          });
+          productsList += "</ul>";
+
+          modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                    <div class="header-modal">
+                      <img src="./assets/images/icon-order-confirmed.svg" />
+                      <h2>Order confirmed</h2>
+                      <span>We hope you enjoy your food!</span>
+                    </div>
+                    <div class="order-list-product">
+                      <div class="order-item-list">${productsList}</div>
+                    </div>
+                    
+                    <div class="modal-total">
+                        <span>Total Price:</span>
+                        <strong>$ ${this.total.toFixed(2)}</strong>
+                    </div>
+                    <div class="new-order-btn">
+                        <div class="order-btn">
+                          <span>Start new order</span>
+                        </div>
+                    </div>
+                </div>
+            `;
           document.body.appendChild(modal);
         }
 
@@ -107,6 +184,7 @@ export class Cart {
       });
 
       cartContainer.appendChild(totalPrice);
+      cartContainer.appendChild(carbonNeutralImage);
       cartContainer.appendChild(completeOrderBtn);
     }
   }
