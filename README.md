@@ -36,7 +36,7 @@ O projeto é composto pelos seguintes arquivos principais:
 - Para clonar o repositório:
 
 ```bash
-  git clone https://github.com/IzabelleAlves/Product-list-with-cart.git/
+  git clone https://github.com/cabarros3/product-list-with-cart-web.git
 ```
 
 - Instale as dependências:
@@ -61,5 +61,4 @@ O projeto é composto pelos seguintes arquivos principais:
 
 **_Entre em contato comigo_**
 
-- **E-mail**: [izabelle.alvesbl@gmail.com](mailto:izabelle.alvesbl@gmail.com)
-- **LinkedIn**: [Izabelle Alves](https://www.linkedin.com/in/izabellealvess/)
+- **LinkedIn**: [Camilla Barros](https://www.linkedin.com/in/camillabarros/)
